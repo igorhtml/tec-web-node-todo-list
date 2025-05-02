@@ -25,9 +25,14 @@ const { lerEntrada } = require("./entrada.js");
 async function listarTarefas(caminhoDoArquivo) {
     try {
         tarefas = await recuperarTarefas(caminhoDoArquivo);
+
+        console.log("-- Tarefas --")
+
         for (let i = 0; i < tarefas.length; i++) {
             console.log(`${i + 1}. ` + tarefas[i]);
         }
+
+        console.log("");
     } catch (erro) {
 
         console.error("Erro ao ler o arquivo:", erro);
@@ -39,7 +44,7 @@ async function listarTarefas(caminhoDoArquivo) {
 async function escreverTarefa(caminhoDoArquivo, conteudoTarefa) {
     try {
         await fs.appendFile(caminhoDoArquivo, conteudoTarefa + "\n"); // "\n" adiciona uma nova linha após o conteúdo
-        console.log("Tarefa adicionada com sucesso!");
+        console.log("Tarefa adicionada com sucesso!\n");
 
     } catch (erro) {
         console.error("Erro ao criar a tarefa: ", erro);
@@ -63,6 +68,8 @@ async function deletarTarefa(caminhoDoArquivo) {
             await fs.appendFile(caminhoDoArquivo, tarefas[i] + "\n");
         }
 
+        console.log("Tarefa deletada com sucesso!\n");
+
     } catch (erro) {
         console.error("Erro ao deletar a tarefa: ", erro);
     }
@@ -72,7 +79,7 @@ async function deletarTarefa(caminhoDoArquivo) {
 async function deletarTodas(caminhoDoArquivo) {
     try {
         await fs.writeFile(caminhoDoArquivo, "");
-        console.log("Tarefas deletada com sucesso!");
+        console.log("Tarefas deletadas com sucesso!\n");
 
     } catch (erro) {
         console.error("Erro ao deletar tarefas: ", erro);
