@@ -49,3 +49,5 @@ Etapas práticas:
 2. Criar um módulo personalizado, como tarefas.js, para conter as funções de adicionar, listar e remover tarefas.
 3. Usar readline para interagir com o usuário no index.js.
 4. Chamar as funções corretas do módulo tarefas.js conforme a escolha do usuário.
+
+OBS: Tentarei usar promisses para deixar o código mais moderno e seguro.
