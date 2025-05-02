@@ -1,6 +1,6 @@
 // modulos
 const { lerEntrada } = require("./entrada.js"); // Entrada de dados
-const { deletarTarefa, listarTarefas, escreverTarefa, deletarTodas } = require("./arquivo.js"); // Manipulação do arquivo
+const { deletarTarefa, listarTarefas, escreverTarefa, deletarTodas, pesquisarTarefa } = require("./arquivo.js"); // Manipulação do arquivo
 
 
 const CAMINHO_ARQUIVO = "./tarefas/tarefas.txt"; // Caminho do arquivo com as tarefas;
@@ -9,7 +9,7 @@ let fecharPrograma = false; // Variavel de controle para o loop. Ao se tornar tr
 
 async function main() {
 
-    let opcao = parseInt( lerEntrada("1 - Criar tarefa\n2 - Listar tarefas\n3 - Deletar tarefa\n4 - Deletar todas as tarefas\n5 - Fechar o programa\n\nEscolha sua opcao: ")); // Lê a opção através do terminal com o modulo
+    let opcao = parseInt(lerEntrada("1 - Criar tarefa\n2 - Listar tarefas\n3 - Deletar tarefa\n4 - Deletar todas as tarefas\n5 - Pesquisar tarefa\n6 - Fechar o programa\n\nEscolha sua opcao: ")); // Lê a opção através do terminal com o modulo
     console.log(""); // Linha vazia para separar a escolha de opção e as outras ações;
 
     switch (opcao) {
@@ -37,6 +37,12 @@ async function main() {
             break;
 
         case 5:
+            const palavraChave = lerEntrada("Digite a palavra chave da pesquisa: ");
+            console.log("");
+            await pesquisarTarefa(palavraChave, CAMINHO_ARQUIVO);
+            break;
+
+        case 6:
             fecharPrograma = true;
             break;
 
@@ -46,9 +52,9 @@ async function main() {
 
 }
 
-async function iniciarPrograma () {
-    while(!fecharPrograma) {
-       await main();
+async function iniciarPrograma() {
+    while (!fecharPrograma) {
+        await main();
     }
 }
 

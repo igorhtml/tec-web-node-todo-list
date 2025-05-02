@@ -1,6 +1,7 @@
 // biblioteca
 const fs = require("fs").promises;
 
+const { error } = require("console");
 //módulo
 const { lerEntrada } = require("./entrada.js");
 
@@ -38,6 +39,25 @@ async function listarTarefas(caminhoDoArquivo) {
         console.error("Erro ao ler o arquivo:", erro);
         return 0;
     }
+}
+
+// Pesquisar tarefas que contenham uma palavra
+async function pesquisarTarefa(palavra, caminhoDoArquivo) {
+    try {
+        let tarefas = await recuperarTarefas(caminhoDoArquivo);
+
+        for(let i = 0; i < tarefas.length; i++) {
+            if(tarefas[i].includes(palavra)) {
+                console.log(tarefas[i]);
+            }
+        }
+
+        console.log("");
+
+    } catch (erro) {
+        console.error("Erro ao pesquisar tarefa: ", erro)
+    }
+    
 }
 
 // Criar nova tarefa (adicionar uma nova linha ao arquivo)
@@ -86,4 +106,4 @@ async function deletarTodas(caminhoDoArquivo) {
     }
 }
 
-module.exports = { escreverTarefa, deletarTarefa, listarTarefas, deletarTodas };
+module.exports = { escreverTarefa, deletarTarefa, listarTarefas, deletarTodas, pesquisarTarefa};
