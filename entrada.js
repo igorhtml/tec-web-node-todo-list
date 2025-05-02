@@ -1,6 +1,4 @@
-
-// Importação da biblioteca
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
 
 // Função para receber entrada no terminal
