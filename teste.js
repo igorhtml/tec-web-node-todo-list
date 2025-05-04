@@ -1,7 +1,5 @@
-const texto = "esse é um teste de um texto";
+tarefas = ["tarefa 1 | Status: [ ]", "tarefa 2 | Status: [ ]", "tarefa 3 | Status: [ ]"];
 
-if(texto.includes("teste")){
-    console.log(texto);
-} else {
-    console.log("Não tem");
-}
+if(tarefas[0].includes("Status: [ ]")){
+    console.log("Sim");
+} else console.log("Não");
